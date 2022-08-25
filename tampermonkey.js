@@ -1,14 +1,15 @@
 // ==UserScript==
 // @name         必应新增常见搜索
 // @namespace    http://tampermonkey.net/
-// @version      0.1
-// @description  必应新增常见搜索
+// @version      1.0
+// @description  在必应中新增了常见搜索
 // @author       bbbyqq
 // @match        *://www.cn.bing.com/*
 // @match        *://cn.bing.com/*
 // @match        *://www.bing.com/*
 // @match        *://bing.com/*
 // @grant        GM_addStyle
+// @license      bbbyqq
 // @require      https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js
 // ==/UserScript==
 
