@@ -37,43 +37,51 @@
     setTimeout(() => {
       $('#est_switch').before(div)
       $('#btn_list').attr("class", "btn_home")
-      readyClick()
+      readyClick('href')
     }, 500)
   }
 
-  function readyClick() {
+  function readyClick(val) {
     const inputVal = $('#sb_form_q')
 
     $("#baidu_btn").click(function () {
-      window.open(`https://www.baidu.com/s?wd=${inputVal.val()}`, '_blank')
+      const url = `https://www.baidu.com/s?wd=${inputVal.val()}`
+      val ? location.href = url : window.open(url, '_blank')
     })
 
     $("#segmentfault_btn").click(function () {
-      window.open(`https://cn.bing.com/search?q=site:segmentfault.com%20${inputVal.val()}`, '_blank')
+      const url = `https://cn.bing.com/search?q=site:segmentfault.com%20${inputVal.val()}`
+      val ? location.href = url : window.open(url, '_blank')
     })
 
     $('#google_btn').click(function () {
-      window.open(`https://www.google.com/search?q=${inputVal.val()}`, '_blank')
+      const url = `https://www.google.com/search?q=${inputVal.val()}`
+      val ? location.href = url : window.open(url, '_blank')
     })
 
     $('#google_translate_btn').click(function () {
-      window.open(`https://translate.google.cn/?sl=auto&tl=en&text=${inputVal.val()}&op=translate`, '_blank')
+      const url = `https://translate.google.cn/?sl=auto&tl=en&text=${inputVal.val()}&op=translate`
+      val ? location.href = url : window.open(url, '_blank')
     })
 
     $("#zhihu_btn").click(function () {
-      window.open(`https://www.zhihu.com/search?type=content&q=${inputVal.val()}`, '_blank')
+      const url = `https://www.zhihu.com/search?type=content&q=${inputVal.val()}`
+      val ? location.href = url : window.open(url, '_blank')
     })
 
     $("#toutiao_btn").click(function () {
-      window.open(`https://so.toutiao.com/search?dvpf=pc&source=input&keyword=${inputVal.val()}`, '_blank')
+      const url = `https://so.toutiao.com/search?dvpf=pc&source=input&keyword=${inputVal.val()}`
+      val ? location.href = url : window.open(url, '_blank')
     })
 
     $("#douban_btn").click(function () {
-      window.open(`https://www.douban.com/search?source=suggest&q=${inputVal.val()}`, '_blank')
+      const url = `https://www.douban.com/search?source=suggest&q=${inputVal.val()}`
+      val ? location.href = url : window.open(url, '_blank')
     })
 
     $("#douyin_btn").click(function () {
-      window.open(`https://www.douyin.com/search/${inputVal.val()}`, '_blank')
+      const url = `https://www.douyin.com/search/${inputVal.val()}`
+      val ? location.href = url : window.open(url, '_blank')
     })
   }
 
