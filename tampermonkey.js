@@ -30,12 +30,12 @@
     `
 
   if ($('.b_scopebar').length) { // 搜索页
-    $('#est_switch').after(div)
+    $('#est_switch').append(div)
     $('#btn_list').attr("class", "btn_search")
     readyClick()
   } else { // 初始页
     setTimeout(() => {
-      $('#est_switch').before(div)
+      $('#est_switch').append(div)
       $('#btn_list').attr("class", "btn_home")
       readyClick('href')
     }, 500)
@@ -88,10 +88,15 @@
   const css = `
   .btn_search {
     margin: 0 0 5px 160px;
+    display: flex;
+    position: absolute;
+    top: 0;
   }
   
   .btn_home {
-    margin-bottom: 5px;
+    position: absolute;
+    top: 8px;
+    margin-left: 160px;
   }
   
   .add_btn {
