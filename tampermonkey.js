@@ -26,6 +26,7 @@
         <button class="add_btn" id="toutiao_btn">头条</button>
         <button class="add_btn" id="douban_btn">豆瓣</button>
         <button class="add_btn" id="douyin_btn">抖音</button>
+        <button class="add_btn" id="bilibili_btn">B站</button>
     </div>
     `
 
@@ -81,6 +82,11 @@
 
     $("#douyin_btn").click(function () {
       const url = `https://www.douyin.com/search/${inputVal.val()}`
+      val ? location.href = url : window.open(url, '_blank')
+    })
+
+    $("#bilibili_btn").click(function () {
+      const url = `https://search.bilibili.com/all?keyword=${inputVal.val()}`
       val ? location.href = url : window.open(url, '_blank')
     })
   }
