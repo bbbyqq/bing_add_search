@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         必应新增常见搜索
 // @namespace    http://tampermonkey.net/
-// @version      1.2
+// @version      1.3
 // @description  在必应中新增了常见搜索
 // @author       bbbyqq
 // @match        *://www.cn.bing.com/*
@@ -43,50 +43,50 @@
   }
 
   function readyClick(val) {
-    const inputVal = $('#sb_form_q')
+    const inputVal = $('#sb_form_q').val()
 
     $("#baidu_btn").click(function () {
-      const url = `https://www.baidu.com/s?wd=${inputVal.val()}`
+      const url = `https://www.baidu.com/s?wd=${inputVal}`
       val ? location.href = url : window.open(url, '_blank')
     })
 
     $("#segmentfault_btn").click(function () {
-      const url = `https://cn.bing.com/search?q=site:segmentfault.com%20${inputVal.val()}`
+      const url = `https://cn.bing.com/search?q=site:segmentfault.com%20${inputVal}`
       val ? location.href = url : window.open(url, '_blank')
     })
 
     $('#google_btn').click(function () {
-      const url = `https://www.google.com/search?q=${inputVal.val()}`
+      const url = `https://www.google.com/search?q=${inputVal}`
       val ? location.href = url : window.open(url, '_blank')
     })
 
     $('#google_translate_btn').click(function () {
-      const url = `https://translate.google.cn/?sl=auto&tl=en&text=${inputVal.val()}&op=translate`
+      const url = `https://translate.google.cn/?sl=auto&tl=en&text=${inputVal}&op=translate`
       val ? location.href = url : window.open(url, '_blank')
     })
 
     $("#zhihu_btn").click(function () {
-      const url = `https://www.zhihu.com/search?type=content&q=${inputVal.val()}`
+      const url = `https://www.zhihu.com/search?type=content&q=${inputVal}`
       val ? location.href = url : window.open(url, '_blank')
     })
 
     $("#toutiao_btn").click(function () {
-      const url = `https://so.toutiao.com/search?dvpf=pc&source=input&keyword=${inputVal.val()}`
+      const url = `https://so.toutiao.com/search?dvpf=pc&source=input&keyword=${inputVal}`
       val ? location.href = url : window.open(url, '_blank')
     })
 
     $("#douban_btn").click(function () {
-      const url = `https://www.douban.com/search?source=suggest&q=${inputVal.val()}`
+      const url = `https://www.douban.com/search?source=suggest&q=${inputVal}`
       val ? location.href = url : window.open(url, '_blank')
     })
 
     $("#douyin_btn").click(function () {
-      const url = `https://www.douyin.com/search/${inputVal.val()}`
+      const url = `https://www.douyin.com/search/${inputVal}`
       val ? location.href = url : window.open(url, '_blank')
     })
 
     $("#bilibili_btn").click(function () {
-      const url = `https://search.bilibili.com/all?keyword=${inputVal.val()}`
+      const url = `https://search.bilibili.com/all?keyword=${inputVal}`
       val ? location.href = url : window.open(url, '_blank')
     })
   }
