@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         必应新增常见搜索
 // @namespace    http://tampermonkey.net/
-// @version      1.2
+// @version      1.4
 // @description  在必应中新增了常见搜索
 // @author       bbbyqq
 // @match        *://www.cn.bing.com/*
@@ -21,7 +21,6 @@
         <button class="add_btn" id="baidu_btn">百度</button>
         <button class="add_btn" id="segmentfault_btn">segmentfault</button>
         <button class="add_btn" id="google_btn">谷歌</button>
-        <button class="add_btn" id="google_translate_btn">谷歌翻译</button>
         <button class="add_btn" id="zhihu_btn">知乎</button>
         <button class="add_btn" id="toutiao_btn">头条</button>
         <button class="add_btn" id="douban_btn">豆瓣</button>
@@ -57,11 +56,6 @@
 
     $('#google_btn').click(function () {
       const url = `https://www.google.com/search?q=${inputVal.val()}`
-      val ? location.href = url : window.open(url, '_blank')
-    })
-
-    $('#google_translate_btn').click(function () {
-      const url = `https://translate.google.cn/?sl=auto&tl=en&text=${inputVal.val()}&op=translate`
       val ? location.href = url : window.open(url, '_blank')
     })
 
