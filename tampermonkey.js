@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         必应新增常见搜索
 // @namespace    http://tampermonkey.net/
-// @version      1.4
+// @version      1.5
 // @description  在必应中新增了常见搜索
 // @author       bbbyqq
 // @match        *://www.cn.bing.com/*
@@ -16,78 +16,94 @@
 (function () {
   'use strict'
 
-  let div = `
-    <div id="btn_list">
-        <button class="add_btn" id="baidu_btn">百度</button>
-        <button class="add_btn" id="segmentfault_btn">segmentfault</button>
-        <button class="add_btn" id="google_btn">谷歌</button>
-        <button class="add_btn" id="zhihu_btn">知乎</button>
-        <button class="add_btn" id="toutiao_btn">头条</button>
-        <button class="add_btn" id="douban_btn">豆瓣</button>
-        <button class="add_btn" id="douyin_btn">抖音</button>
-        <button class="add_btn" id="bilibili_btn">B站</button>
-    </div>
-    `
+  const btnList = [
+    {
+      id: 'baidu_btn',
+      text: '百度',
+      url: 'https://www.baidu.com/s?wd=',
+    },
+    {
+      id: 'segmentfault_btn',
+      text: 'segmentfault',
+      url: 'https://cn.bing.com/search?q=site:segmentfault.com%20',
+    },
+    {
+      id: 'google_btn',
+      text: '谷歌',
+      url: 'https://www.google.com/search?q=',
+    },
+    {
+      id: 'zhihu_btn',
+      text: '知乎',
+      url: 'https://www.zhihu.com/search?type=content&q=',
+    },
+    {
+      id: 'toutiao_btn',
+      text: '头条',
+      url: 'https://so.toutiao.com/search?dvpf=pc&source=input&keyword=',
+    },
+    {
+      id: 'douban_btn',
+      text: '豆瓣',
+      url: 'https://www.douban.com/search?source=suggest&q=',
+    },
+    {
+      id: 'douyin_btn',
+      text: '抖音',
+      url: 'https://www.douyin.com/search/',
+    },
+    {
+      id: 'bilibili_btn',
+      text: 'B站',
+      url: 'https://search.bilibili.com/all?keyword=',
+    },
+    {
+      id: 'youtube_btn',
+      text: 'YouTube',
+      url: 'https://www.youtube.com/results?search_query=',
+    }
+  ]
+
+  let div = `<div id="btn_list"></div>`
 
   if ($('.b_scopebar').length) { // 搜索页
     $('#est_switch').append(div)
+    btnList.forEach(item => {
+      $('#btn_list').append(`
+        <button class="add_btn" id="${item.id}">${item.text}</button>
+      `)
+    })
     $('#btn_list').attr("class", "btn_search")
     readyClick()
+    $('#b_footer').css("display", "none")
   } else { // 初始页
     setTimeout(() => {
       $('#est_switch').append(div)
+      btnList.forEach(item => {
+        $('#btn_list').append(`
+          <button class="add_btn" id="${item.id}">${item.text}</button>
+       `)
+      })
       $('#btn_list').attr("class", "btn_home")
       readyClick('href')
+      $('#footer').css("display", "none")
     }, 500)
   }
 
   function readyClick(val) {
     const inputVal = $('#sb_form_q')
 
-    $("#baidu_btn").click(function () {
-      const url = `https://www.baidu.com/s?wd=${inputVal.val()}`
-      val ? location.href = url : window.open(url, '_blank')
-    })
-
-    $("#segmentfault_btn").click(function () {
-      const url = `https://cn.bing.com/search?q=site:segmentfault.com%20${inputVal.val()}`
-      val ? location.href = url : window.open(url, '_blank')
-    })
-
-    $('#google_btn').click(function () {
-      const url = `https://www.google.com/search?q=${inputVal.val()}`
-      val ? location.href = url : window.open(url, '_blank')
-    })
-
-    $("#zhihu_btn").click(function () {
-      const url = `https://www.zhihu.com/search?type=content&q=${inputVal.val()}`
-      val ? location.href = url : window.open(url, '_blank')
-    })
-
-    $("#toutiao_btn").click(function () {
-      const url = `https://so.toutiao.com/search?dvpf=pc&source=input&keyword=${inputVal.val()}`
-      val ? location.href = url : window.open(url, '_blank')
-    })
-
-    $("#douban_btn").click(function () {
-      const url = `https://www.douban.com/search?source=suggest&q=${inputVal.val()}`
-      val ? location.href = url : window.open(url, '_blank')
-    })
-
-    $("#douyin_btn").click(function () {
-      const url = `https://www.douyin.com/search/${inputVal.val()}`
-      val ? location.href = url : window.open(url, '_blank')
-    })
-
-    $("#bilibili_btn").click(function () {
-      const url = `https://search.bilibili.com/all?keyword=${inputVal.val()}`
-      val ? location.href = url : window.open(url, '_blank')
+    btnList.forEach(item => {
+      $(`#${item.id}`).click(function () {
+        const url = `${item.url + inputVal.val()}`
+        val ? location.href = url : window.open(url, '_blank')
+      })
     })
   }
 
   const css = `
   .btn_search {
-    margin: 0 0 5px 160px;
+    margin: 0 0 5px 145px;
     display: flex;
     position: absolute;
     top: 0;
@@ -119,11 +135,11 @@
     user-select: none;
     touch-action: manipulation;
     height: 100%;
-    padding: 5px 20px;
+    padding: 5px 15px;
     font-size: 16px;
     border-radius: 30px;
     border: none;
-    margin-right: 5px;
+    margin-right: 3px;
   }
   
   .add_btn:hover {
@@ -131,5 +147,4 @@
     background-color: #40a9ff;
   }`
   GM_addStyle(css)
-
 })()
