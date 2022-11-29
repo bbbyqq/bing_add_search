@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         必应新增常见搜索
 // @namespace    http://tampermonkey.net/
-// @version      1.5
+// @version      1.6
 // @description  在必应中新增了常见搜索
 // @author       bbbyqq
 // @match        *://www.cn.bing.com/*
@@ -87,6 +87,8 @@
       $('#btn_list').attr("class", "btn_home")
       readyClick('href')
       $('#footer').css("display", "none")
+      $('.tray_cont').css("display", "none")
+      $('#scroll_cont').css("display", "none")
     }, 500)
   }
 
@@ -113,6 +115,7 @@
     position: absolute;
     top: 8px;
     margin-left: 160px;
+    display: flex;
   }
   
   .add_btn {
