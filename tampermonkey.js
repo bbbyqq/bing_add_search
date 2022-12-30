@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         必应新增常见搜索
 // @namespace    http://tampermonkey.net/
-// @version      1.7
+// @version      1.8
 // @description  在必应中新增了常见搜索
 // @author       bbbyqq
 // @match        *://www.cn.bing.com/*
