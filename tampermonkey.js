@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         必应新增常见搜索
 // @namespace    http://tampermonkey.net/
-// @version      1.6
+// @version      1.7
 // @description  在必应中新增了常见搜索
 // @author       bbbyqq
 // @match        *://www.cn.bing.com/*
@@ -89,6 +89,10 @@
       $('#footer').css("display", "none")
       $('.tray_cont').css("display", "none")
       $('#scroll_cont').css("display", "none")
+      $('#id_rh').css("display", "none")
+      $('#id_qrcode').css("display", "none")
+      $('#id_qrcode_popup_positioner').css("display", "none")
+      $('html').css("overflowY", "hidden")
     }, 500)
   }
 
