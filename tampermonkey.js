@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         必应新增常见搜索
 // @namespace    http://tampermonkey.net/
-// @version      2.0
+// @version      2.1
 // @description  在必应中新增了常见搜索
 // @author       bbbyqq
 // @match        *://www.cn.bing.com/*
@@ -28,17 +28,18 @@
   }
 
   let div = `
-    <div id="btn_list">
-      <button class="add_btn" id="more_btn">更多</button>
-    </div>`
+    <div id="btn_list"></div>`
 
   if ($('.b_scopebar').length) { // 搜索页
     $('#est_switch').append(div)
-    localStorageBtnList.reverse().forEach(item => {
-      $('#btn_list').prepend(`
+    localStorageBtnList.forEach(item => {
+      $('#btn_list').append(`
         <button class="add_btn" id="${item.id}">${item.text}</button>
       `)
     })
+    $('#btn_list').append(`
+      <button class="add_btn" id="more_btn">+</button>
+    `)
     $('#btn_list').attr("class", "btn_search")
     readyClick()
     handleMoreClick()
@@ -46,11 +47,14 @@
   } else { // 初始页
     setTimeout(() => {
       $('#est_switch').append(div)
-      localStorageBtnList.reverse().forEach(item => {
-        $('#btn_list').prepend(`
+      localStorageBtnList.forEach(item => {
+        $('#btn_list').append(`
           <button class="add_btn" id="${item.id}">${item.text}</button>
        `)
       })
+      $('#btn_list').append(`
+        <button class="add_btn" id="more_btn">+</button>
+      `)
       $('#btn_list').attr("class", "btn_home")
       readyClick('href')
       handleMoreClick()
@@ -120,7 +124,7 @@
     $("#more_btn").unbind("click").bind("click", function () {
       // 弹出弹窗
       $('body').append(modal)
-      localStorageBtnList.reverse().forEach(item => {
+      localStorageBtnList.forEach(item => {
         $('#new_btn_list').append(`
           <button class="add_btn ${item.id}" id="${item.id}">${item.text}</button>
         `)
@@ -206,8 +210,8 @@
 
   // 定义uuid
   function uuid() {
-    var temp_url = URL.createObjectURL(new Blob())
-    var uuid = temp_url.toString()
+    let temp_url = URL.createObjectURL(new Blob())
+    let uuid = temp_url.toString()
     URL.revokeObjectURL(temp_url)
     return uuid.substr(uuid.lastIndexOf("/") + 1)
   }
