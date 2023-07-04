@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         必应新增常见搜索
 // @namespace    http://tampermonkey.net/
-// @version      2.1
+// @version      2.2
 // @description  在必应中新增了常见搜索
 // @author       bbbyqq
 // @match        *://www.cn.bing.com/*
@@ -44,6 +44,8 @@
     readyClick()
     handleMoreClick()
     $('#b_footer').css("display", "none")
+    // 删除小冰
+    $('#ev_talkbox_wrapper').css("display", "none")
   } else { // 初始页
     setTimeout(() => {
       $('#est_switch').append(div)
@@ -256,7 +258,6 @@
     background-color: #1890ff;
     border-color: #1890ff;
     text-shadow: 0 -1px 0 rgb(0 0 0 / 12%);
-    line-height: 100%;
     position: relative;
     display: inline-block;
     font-weight: 400;
@@ -270,10 +271,9 @@
     -ms-user-select: none;
     user-select: none;
     touch-action: manipulation;
-    height: 25px;
-    padding: 5px 15px;
-    font-size: 16px;
-    border-radius: 30px;
+    padding: 2px 5px;
+    font-size: 14px;
+    border-radius: 10px;
     border: none;
     margin: 3px 3px 0 0;
   }
