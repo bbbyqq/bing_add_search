@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         必应新增常见搜索
 // @namespace    http://tampermonkey.net/
-// @version      2.3
+// @version      2.4
 // @description  在必应中新增了常见搜索
 // @author       bbbyqq
 // @match        *://www.cn.bing.com/*
@@ -66,6 +66,7 @@
       $('#id_rh').css("display", "none")
       $('#id_qrcode').css("display", "none")
       $('#id_qrcode_popup_positioner').css("display", "none")
+      $('.below_sbox').css("display", "none")
       $('html').css("overflowY", "hidden")
     }, 500)
   }
@@ -408,4 +409,4 @@
 })()
 
 // 当浏览器缓存丢了，可用此数据在localStorage的btnList快速恢复
-// [{"id":"ff937032-49df-42b6-b31b-1462c4922c44","text":"百度","url":"https://www.baidu.com/s?wd="},{"id":"86af6786-ad7b-420d-a4aa-393ed48554a1","text":"SFT","url":"https://cn.bing.com/search?q=site:segmentfault.com%20"},{"id":"c8c6a262-2450-4a39-8ca6-fa67651f24c9","text":"谷歌","url":"https://www.google.com/search?q="},{"id":"693d8801-b664-410e-9e0b-ca675c10e91a","text":"知乎","url":"https://www.zhihu.com/search?type=content&q="},{"id":"2b714949-db3c-43d6-b14b-5a1493e0b39d","text":"头条","url":"https://so.toutiao.com/search?dvpf=pc&source=input&keyword="},{"id":"0811db98-2e48-4816-a7ec-01bd26b03bc4","text":"豆瓣","url":"https://www.douban.com/search?source=suggest&q="},{"id":"7db028aa-46d4-4136-8b61-f1ff8063a15a","text":"抖音","url":"https://www.douyin.com/search/"},{"id":"4c592248-4c4b-4494-bd01-9f9a533531f2","text":"B站","url":"https://search.bilibili.com/all?keyword="},{"id":"a0436c07-780b-4008-8d45-647eb8c6f7c3","text":"YouTube","url":"https://www.youtube.com/results?search_query="},{"id":"be91a87a-1172-44f3-a653-aa0556f6832a","text":"github","url":"https://github.com/search?q="}]
+// [{"id":"ff937032-49df-42b6-b31b-1462c4922c44","text":"百度","url":"https://www.baidu.com/s?wd="},{"id":"86af6786-ad7b-420d-a4aa-393ed48554a1","text":"SFT","url":"https://cn.bing.com/search?q=site:segmentfault.com%20"},{"id":"c8c6a262-2450-4a39-8ca6-fa67651f24c9","text":"谷歌","url":"https://www.google.com/search?q="},{"id":"693d8801-b664-410e-9e0b-ca675c10e91a","text":"知乎","url":"https://www.zhihu.com/search?type=content&q="},{"id":"2b714949-db3c-43d6-b14b-5a1493e0b39d","text":"头条","url":"https://so.toutiao.com/search?dvpf=pc&source=input&keyword="},{"id":"0811db98-2e48-4816-a7ec-01bd26b03bc4","text":"豆瓣","url":"https://www.douban.com/search?source=suggest&q="},{"id":"7db028aa-46d4-4136-8b61-f1ff8063a15a","text":"抖音","url":"https://www.douyin.com/search/"},{"id":"4c592248-4c4b-4494-bd01-9f9a533531f2","text":"B站","url":"https://search.bilibili.com/all?keyword="},{"id":"a0436c07-780b-4008-8d45-647eb8c6f7c3","text":"YouTube","url":"https://www.youtube.com/results?search_query="},{"id":"be91a87a-1172-44f3-a653-aa0556f6832a","text":"github","url":"https://github.com/search?q="},{"id":"d6bc5c8f-3014-4e1d-962c-2d987a923319","text":"高德","url":"https://amap.com/search?query="}]
